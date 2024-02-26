@@ -35,7 +35,9 @@ cp local/dictsrc/optional_silence.txt $dir/optional_silence.txt
 
 
 # Copy pre-made lexicon
-wget http://www.openslr.org/resources/29/lexicon-sv.tgz --directory-prefix=data/local/data/download
+if [ ! -f data/local/data/download/lexicon-sv.tgz ]; then
+    wget http://www.openslr.org/resources/29/lexicon-sv.tgz --output-document=data/local/data/download/lexicon-sv.tgz
+fi
 tar -xzf data/local/data/download/lexicon-sv.tgz -C $dir
 
 

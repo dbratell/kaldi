@@ -7,7 +7,8 @@
 
 uid=$1       # Here $uid is the LM identifier, e.g '3g'
 test1=$2
-test2=$3
+#test2=$3
+test2=$2
 
 
  steps/nnet2/train_tanh.sh \
@@ -21,9 +22,10 @@ test2=$3
     --transform-dir exp/tri4a/decode_4g \
      exp/tri4a/graph_4g data/test exp/nnet5c/decode_4g_test
 
-if [ -d $test2 ]; then
-  steps/decode_nnet_cpu.sh --cmd "$decode_cmd" --nj 4 \
-    --transform-dir exp/tri4a/decode_${uid}_$test2 \
+if [ -d data/$test2 ]; then
+  nj=4  # Originally 4 but 4 doesn't work with small dataset.
+  steps/nnet2/decode.sh --cmd "$decode_cmd" --nj $nj \
+    --transform-dir exp/tri4a/decode_$test2 \
      exp/tri4a/graph_${uid} data/$test2 exp/nnet5c/decode_${uid}_$test2
 fi
 

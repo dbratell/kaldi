@@ -82,8 +82,9 @@ if [ ! -f $srcdir/utt2spk ]; then
   exit 1
 fi
 
-if [[ $numutt && $numutt -gt $(wc -l <$srcdir/utt2spk) ]]; then
-  echo "$0: cannot subset to more utterances than you originally had."
+current_utterance_count=$(wc -l <$srcdir/utt2spk)
+if [[ $numutt && $numutt -gt $current_utterance_count ]]; then
+  echo "$0: cannot subset to more utterances ($numutt) than you originally had ($current_utterance_count)."
   exit 1
 fi
 

@@ -170,9 +170,22 @@ function filter_utts {
     maybe_utt2num_frames=utt2num_frames.ok
   fi
 
+  # echo "1. $maybe_wav"
+  # echo "2. $maybe_utt2dur"
+  # echo "3. $maybe_utt2num_frames"
+  # echo "4. $maybe_reco2dur"
+
+  # echo "$data/$maybe_utt2num_frames :"
+  # cat $data/$maybe_utt2num_frames
+  # echo "$data/utt2num_frames :"
+  # cat $data/utt2num_frames
   for x in feats.scp text segments utt2lang $maybe_wav $maybe_utt2dur $maybe_utt2num_frames; do
     if [ -f $data/$x ]; then
       utils/filter_scp.pl $data/$x $tmpdir/utts > $tmpdir/utts.tmp
+      # echo "To keep:"
+      # cat $tmpdir/utts
+      # echo "from $data/$x:"
+      # cat $data/$x
       mv $tmpdir/utts.tmp $tmpdir/utts
     fi
   done

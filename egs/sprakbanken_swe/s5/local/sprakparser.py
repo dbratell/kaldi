@@ -46,6 +46,7 @@ class Session(object):
         if self.wavdir:
             self.extract_record_states(splhandle)
             self.extract_validation_states(splhandle)
+        splhandle.close()
 
     def extract_record_states(self, handle):
         self.record_states = []

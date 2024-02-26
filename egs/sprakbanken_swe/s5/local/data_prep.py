@@ -91,7 +91,7 @@ def make_kaldi_scp(line, sph, wav=False):
     else:
         wavpath = wav
     utt_id = kaldi_utt_id(line)
-    return utt_id + " " + sph + " " + wavpath + " |\n"
+    return utt_id + " " + sph + " '" + wavpath + "' |\n"
 
 
 def make_utt2spk(line):

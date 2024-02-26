@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 . ./cmd.sh
+. ./path.sh
 
 
 # ...
 
-local/nnet2/sprak_run_5c.sh $1 $2 $3
+local/sprak_run_5c.sh $1 $2 $3
 
